@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:politika/pages/bookmarked_news_page.dart';
 
 import './pages/home.dart';
 import './pages/auth_page.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Politika',
       theme: ThemeData(),
-      home: AuthPage(),
+      home: HomePage(),
     );
   }
 }

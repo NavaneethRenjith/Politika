@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:politika/models/news_model.dart';
+import 'package:politika/widgets/newsTile.dart';
 
 import './detailed_news_page.dart';
 
@@ -136,6 +137,10 @@ class _LocationPageState extends State<LocationPage> {
                                   locationNewsList[index]["location"];
                               newsModel.date = reqDate;
                               newsModel.time = final_req_time;
+                              newsModel.image =
+                                  locationNewsList[index]["image"];
+                              newsModel.isBookmarked =
+                                  locationNewsList[index]["isBookmarked"];
                               return Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 8),
@@ -143,6 +148,7 @@ class _LocationPageState extends State<LocationPage> {
                                   child: newsTile(
                                     locationNewsList[index]['title'],
                                     locationNewsList[index]['content'],
+                                    locationNewsList[index]['image'],
                                     context,
                                   ),
                                   onTap: () {
@@ -172,55 +178,4 @@ class _LocationPageState extends State<LocationPage> {
       ),
     );
   }
-}
-
-Widget newsTile(String title, String desc, BuildContext context) {
-  return Container(
-    padding: EdgeInsets.all(14),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(16)),
-      color: Color(0xFFF3F5FA),
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Center(
-          child: Container(
-            width: MediaQuery.of(context).size.width * .85,
-            height: MediaQuery.of(context).size.height * .09,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              image: DecorationImage(
-                image: NetworkImage(
-                  "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202012/farmers_protest_new_1_1200x768.jpeg?VlOrX6VttKVKtdcGFtE.1cuNrt3x.AHH&size=770:433",
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          title,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-          maxLines: 2,
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          desc,
-          maxLines: 2,
-          style: TextStyle(
-            color: Colors.black45,
-          ),
-        ),
-      ],
-    ),
-  );
 }
