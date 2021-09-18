@@ -1,6 +1,11 @@
-# politika
+# Politika
 
-A new Flutter project.
+Basically a place with all you need to know about politics, decision making and political leaders in one place.
+Filtered by region
+
+### What we offer
+
+Quality Independant journalism, without compromises to help you stay in the loop and make informed decisions. With curated local content that is ad-free and unbiased.
 
 ## Getting Started
 
