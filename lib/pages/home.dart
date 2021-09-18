@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:politika/pages/deatiled_news_page.dart';
+import './detailed_news_page.dart';
+import '../location_search_bar.dart';
 
-List titleList = ["Title1 ", "Title2", "Title3", "title4"];
+List titleList = ["Title1 ", "Title2", "Title3", "Title4", "Title5"];
 List descList = [
   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in",
   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in",
   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in",
-  "desc4"
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in",
+  "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in",
 ];
 
 class HomePage extends StatelessWidget {
@@ -35,46 +37,52 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: searchBar(context),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              child: ListView.builder(
-                // shrinkWrap: true,
-                // physics: ClampingScrollPhysics(),
-                itemCount: titleList.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: InkWell(
-                      child: newsTile(
-                        titleList[index],
-                        descList[index],
-                        context,
-                      ),
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (BuildContext context) => DetailedNews(),
+      body: Stack(
+        children: [
+          Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Center(
+                //   child: searchBar(context),
+                // ),
+                SizedBox(
+                  height: 50,
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    // shrinkWrap: true,
+                    // physics: ClampingScrollPhysics(),
+                    itemCount: titleList.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: InkWell(
+                          child: newsTile(
+                            titleList[index],
+                            descList[index],
+                            context,
                           ),
-                        );
-                      },
-                    ),
-                  );
-                },
-              ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    DetailedNews(),
+                              ),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          LocationSearchBar(),
+        ],
       ),
     );
   }

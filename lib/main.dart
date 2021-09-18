@@ -11,14 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Politika',
-      theme: ThemeData(
-        textTheme: TextTheme(
-          headline6: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      theme: ThemeData(),
       home: HomePage(),
     );
   }
