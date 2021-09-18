@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Politika',
       theme: ThemeData(),
-      home: HomePage(),
+      home: AuthPage(),
     );
   }
 }

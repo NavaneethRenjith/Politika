@@ -208,8 +208,14 @@ Widget newsTile(String title, String desc, BuildContext context) {
             height: MediaQuery.of(context).size.height * .09,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(5)),
+              // image: DecorationImage(
+              //   image: AssetImage('assets/image.jpg'),
+              //   fit: BoxFit.cover,
+              // ),
               image: DecorationImage(
-                image: AssetImage('assets/image.jpg'),
+                image: NetworkImage(
+                  "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202012/farmers_protest_new_1_1200x768.jpeg?VlOrX6VttKVKtdcGFtE.1cuNrt3x.AHH&size=770:433",
+                ),
                 fit: BoxFit.cover,
               ),
             ),
