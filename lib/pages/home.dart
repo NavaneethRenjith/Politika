@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'dart:convert';
 
 import 'package:politika/models/news_model.dart';
+import 'package:politika/pages/bookmarked_news_page.dart';
+import 'package:politika/widgets/newsTile.dart';
 
 import './detailed_news_page.dart';
 import '../location_search_bar.dart';
@@ -25,6 +27,7 @@ class _HomePageState extends State<HomePage> {
       if (response.statusCode == 200) {
         var jsonData = json.decode(response.body);
         newsList = jsonData;
+        print(jsonData);
         return newsList;
       } else {
         print("failed");
@@ -52,7 +55,13 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) => BookmarkedNews()),
+              );
+            },
             icon: Icon(
               Icons.bookmark,
               color: Colors.black,
@@ -120,12 +129,16 @@ class _HomePageState extends State<HomePage> {
                                   am_pm;
 
                               NewsModel newsModel = new NewsModel();
+                              print(newsModel);
                               newsModel.id = newsList[index]["id"];
                               newsModel.title = newsList[index]["title"];
                               newsModel.desc = newsList[index]["content"];
                               newsModel.location = newsList[index]["location"];
                               newsModel.date = reqDate;
                               newsModel.time = final_req_time;
+                              newsModel.image = newsList[index]["image"];
+                              newsModel.isBookmarked =
+                                  newsList[index]["isBookmarked"];
                               return Padding(
                                 padding:
                                     const EdgeInsets.symmetric(vertical: 8),
@@ -133,6 +146,7 @@ class _HomePageState extends State<HomePage> {
                                   child: newsTile(
                                     newsList[index]['title'],
                                     newsList[index]['content'],
+                                    newsList[index]['image'],
                                     context,
                                   ),
                                   onTap: () {
@@ -163,59 +177,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-Widget newsTile(String title, String desc, BuildContext context) {
-  return Container(
-    padding: EdgeInsets.all(14),
-    decoration: BoxDecoration(
-      borderRadius: BorderRadius.all(Radius.circular(16)),
-      color: Color(0xFFF3F5FA),
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Center(
-          child: Container(
-            width: MediaQuery.of(context).size.width * .85,
-            height: MediaQuery.of(context).size.height * .09,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(5)),
-              // image: DecorationImage(
-              //   image: AssetImage('assets/image.jpg'),
-              //   fit: BoxFit.cover,
-              // ),
-              image: DecorationImage(
-                image: NetworkImage(
-                  "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202012/farmers_protest_new_1_1200x768.jpeg?VlOrX6VttKVKtdcGFtE.1cuNrt3x.AHH&size=770:433",
-                ),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          title,
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
-          ),
-          maxLines: 2,
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Text(
-          desc,
-          maxLines: 2,
-          style: TextStyle(
-            color: Colors.black45,
-          ),
-        ),
-      ],
-    ),
-  );
 }

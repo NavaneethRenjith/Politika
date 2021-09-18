@@ -12,7 +12,6 @@ class AuthPage extends StatefulWidget {
 class _AuthPageState extends State<AuthPage> {
   // sawo object
   Sawo sawo = Sawo(
-    //! dont show api key
     apiKey: dotenv.env['API_KEY'].toString(),
     secretKey: dotenv.env['SECRET_KEY'].toString(),
   );

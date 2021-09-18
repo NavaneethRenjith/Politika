@@ -5,5 +5,7 @@ class NewsModel {
   dynamic desc;
   dynamic date;
   dynamic time;
-  NewsModel({id, location, title, desc, date, time});
+  dynamic image;
+  var isBookmarked;
+  NewsModel({id, location, title, desc, date, time, image, isBookmarked});
 }
