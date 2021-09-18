@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+import 'package:politika/pages/location_based_news.dart';
 
 class LocationSearchBar extends StatelessWidget {
   const LocationSearchBar({Key? key}) : super(key: key);
@@ -83,7 +84,14 @@ class LocationSearchBar extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                LocationPage(loc: "kochi")),
+                      );
+                    },
                     child: Container(
                       margin: const EdgeInsets.symmetric(vertical: 6),
                       width: double.infinity,
@@ -104,7 +112,14 @@ class LocationSearchBar extends StatelessWidget {
                   ),
                   Divider(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                LocationPage(loc: "trivandrum")),
+                      );
+                    },
                     child: Container(
                       margin: const EdgeInsets.symmetric(vertical: 6),
                       width: double.infinity,
@@ -125,7 +140,14 @@ class LocationSearchBar extends StatelessWidget {
                   ),
                   Divider(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                LocationPage(loc: "newdelhi")),
+                      );
+                    },
                     child: Container(
                       margin: const EdgeInsets.symmetric(vertical: 6),
                       width: double.infinity,
