@@ -165,33 +165,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-Widget searchBar(BuildContext context) {
-  return Container(
-    height: MediaQuery.of(context).size.height * 0.06,
-    decoration: BoxDecoration(
-      color: Color(0xFFF3F5FA),
-      borderRadius: BorderRadius.circular(10),
-    ),
-    child: Row(
-      children: [
-        SizedBox(width: MediaQuery.of(context).size.width * 0.03),
-        Icon(
-          Icons.search,
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        Text(
-          'Search',
-          style: TextStyle(
-            fontSize: 16,
-          ),
-        ),
-      ],
-    ),
-  );
-}
-
 Widget newsTile(String title, String desc, BuildContext context) {
   return Container(
     padding: EdgeInsets.all(14),
