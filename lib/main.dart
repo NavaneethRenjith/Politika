@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './pages/home.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -18,44 +20,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Politika',
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.bookmark,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
-      body: Container(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Contents of home page
-          ],
-        ),
-      ),
     );
   }
 }
