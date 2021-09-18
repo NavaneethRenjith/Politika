@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:politika/models/news_model.dart';
+import 'package:politika/pages/bookmarked_news_page.dart';
 
 class DetailedNews extends StatelessWidget {
   final NewsModel newsModel;
@@ -54,7 +55,7 @@ class DetailedNews extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(5)),
                           image: DecorationImage(
                             image: NetworkImage(
-                              "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202012/farmers_protest_new_1_1200x768.jpeg?VlOrX6VttKVKtdcGFtE.1cuNrt3x.AHH&size=770:433",
+                              newsModel.image,
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -74,8 +75,18 @@ class DetailedNews extends StatelessWidget {
                           ),
                         ),
                         IconButton(
-                          onPressed: () {},
-                          icon: Icon(Icons.bookmark),
+                          onPressed: () {
+                            newsModel.isBookmarked = !newsModel.isBookmarked;
+                            if (newsModel.isBookmarked) {
+                              // bookmarkedNewsList.add(newsModel);
+                            } else {
+                              //  bookmarkedNewsList.remove(newsModel);
+                              print("remove");
+                            }
+                          },
+                          icon: newsModel.isBookmarked
+                              ? Icon(Icons.bookmark)
+                              : Icon(Icons.bookmark_add_outlined),
                         ),
                       ],
                     ),
